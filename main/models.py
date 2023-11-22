@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from ckeditor.fields import RichTextField
 
-
 # Create your models here.
 class Skill(models.Model):
     class Meta:
@@ -24,7 +23,7 @@ class UserProfile(models.Model):
         verbose_name_plural = 'User Profiles'
         verbose_name = 'User Profile'
     
-    image = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     avatar = models.ImageField(blank=True,null=True,upload_to="avatar")
     title = models.CharField(max_length=200,blank=True,null=True)
     bio = models.TextField(blank=True,null=True)
@@ -60,6 +59,7 @@ class Testimonial(models.Model):
     name = models.CharField(max_length=200,blank=True,null=True)
     role = models.CharField(max_length=200,blank=True,null=True)
     quote = models.CharField(max_length=500,blank=True,null=True)
+    is_active = models.BooleanField(default=True)
     
     def __str__(self):
         return self.name
@@ -84,7 +84,6 @@ class media(models.Model):
     def __str__(self):
         return self.name
 
-
 class Portfolio(models.Model):
     class Meta:
         verbose_name_plural = 'Portfolio Profiles'
@@ -97,6 +96,7 @@ class Portfolio(models.Model):
     body = RichTextField(blank=True,null=True)
     image = models.ImageField(blank=True,null=True,upload_to="portfolio")
     slug = models.SlugField(null=True,blank=True)
+    is_active = models.BooleanField(default=True)
     
     def save(self,*args,**kwargs):
         if not self.id:
@@ -109,7 +109,6 @@ class Portfolio(models.Model):
     def get_absolute_url(self):
         return f"/portfolio/{self.slug}"
     
-
 class Blog(models.Model):
     class Meta:
         verbose_name_plural = 'Blog Profiles'
@@ -137,7 +136,6 @@ class Blog(models.Model):
         return f"/blog/{self.slug}"
 
 class Certificate(models.Model):
-
     class Meta:
         verbose_name_plural = 'Certificates'
         verbose_name = 'Certificate'
