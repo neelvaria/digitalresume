@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from . models import *
 from django.views import generic
-from .forms import Contactform
+from .forms import *
 # Create your views here.
 
 class IndexView(generic.TemplateView):
@@ -33,15 +33,15 @@ class ContactView(generic.FormView):
         messages.success(self.request,'Thank You.We will be in touch soon!!')
         return super().form_valid(form)
 
-class portfolioview(generic.FormView):
+class PortfolioListView(generic.ListView):
     model = Portfolio
     template_name = "main/portfolio.html"
     paginate_by = 10
     
     def get_queryset(self):
-        return super().get_queryset().filters(is_active=True)
+        return super().get_queryset().filter(is_active=True)
     
-class portfoliodetialview(generic.DeleteView):
+class portfoliodetialview(generic.DetailView):
     model = Portfolio
     template_name = "main/portfolio-detail.html"
 
