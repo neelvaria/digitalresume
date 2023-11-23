@@ -30,6 +30,7 @@ ul {
 }
 img {
   max-width: 100%;
+  border-radius: 30px;
 }
 a {
   color: inherit;
@@ -472,6 +473,7 @@ body.navToggleActive {
 .socialCol img {
   max-width: 30px;
   max-height: 30px;
+  border-radius: 0px;
   -o-object-fit: contain;
   object-fit: contain;
 }
@@ -529,7 +531,7 @@ body.navToggleActive {
   	font-size: 18px;
   }
   .xlTitle {
-  	font-size: 40px;
+  	font-size: 44px;
   }
   .lgTitle {
   	font-size: 28px;
@@ -706,6 +708,7 @@ body.navToggleActive {
   }
   .logoCol img {
   	width: 50px;
+    border-radius: 30px;
   }
   .fixedHeader .headerCol,  .headerCol {
   	padding: 10px 0;
